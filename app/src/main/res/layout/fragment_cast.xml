@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cast"
+            type="com.emreozcan.tmdbapp.model.response.detail.credits.Cast" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.cast.CastFragment">
+
+
+        <ImageView
+            android:id="@+id/ivCastDetail"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            load_image="@{cast.profilePath}"/>
+
+        <TextView
+            android:id="@+id/tvCastDetailName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{cast.name}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCastDetail"
+            app:layout_constraintTop_toTopOf="@+id/ivCastDetail" />
+
+        <TextView
+            android:id="@+id/tvCastCharacter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{cast.character}"
+            app:layout_constraintEnd_toEndOf="@+id/tvCastDetailName"
+            app:layout_constraintStart_toStartOf="@+id/tvCastDetailName"
+            app:layout_constraintTop_toBottomOf="@+id/tvCastDetailName" />
+
+        <TextView
+            android:id="@+id/tvCastCredit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cast.creditİd}"
+            android:textSize="11sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCastDetail"
+            app:layout_constraintEnd_toEndOf="@+id/tvCastCharacter"
+            app:layout_constraintStart_toStartOf="@+id/tvCastCharacter" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

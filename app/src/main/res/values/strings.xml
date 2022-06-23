@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TMDBApp</string>
+    <string name="unknown_error">An unknown error has occurred.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="binding_null">Binding null</string>
+</resources>

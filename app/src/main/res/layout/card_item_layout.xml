@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.emreozcan.tmdbapp.model.response.home.Movie" />
+        <variable
+            name="onItemClickListener"
+            type="com.emreozcan.tmdbapp.ui.home.adapter.ItemClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tvVoteAverage"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/backgroundColor"
+        android:layout_height="130dp"
+        android:layout_marginBottom="15dp"
+        app:cardElevation="0dp"
+        android:layout_marginHorizontal="12dp"
+        app:cardCornerRadius="16dp"
+        app:strokeWidth="1dp"
+        android:onClick="@{() -> onItemClickListener.onItemClick(String.valueOf(movie.id))}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                load_image="@{movie.posterPath}"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tvCardTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{movie.title}"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvCardOverview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Hustle" />
+
+            <TextView
+                android:id="@+id/tvCardOverview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{movie.overview}"
+                app:layout_constraintBottom_toTopOf="@+id/ivCardStar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tvCardTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardTitle"
+                tools:text="After discovering a once-in-a-lifetime player with a rocky past abroad, a down on his luck basketball scout takes it upon himself to bring the phenom to the States without his team's approval. Against the odds, they have one final shot to prove they have what it takes to make it in the NBA." />
+
+            <ImageView
+                android:id="@+id/ivCardStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvCardOverview"
+                app:layout_constraintTop_toBottomOf="@+id/tvCardOverview"
+                app:srcCompat="@drawable/ic_star"
+                app:tint="#FFE500" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toBottomOf="@+id/ivCardStar"
+                app:layout_constraintStart_toEndOf="@+id/ivCardStar"
+                app:layout_constraintTop_toTopOf="@+id/ivCardStar"
+                android:text="@{String.valueOf(movie.voteAverage)}"
+                tools:text="7.9" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
